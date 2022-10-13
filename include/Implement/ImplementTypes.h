@@ -1,6 +1,15 @@
 #pragma once
+#ifndef IMPLEMENT_TYPES_H_
+#define IMPLEMENT_TYPES_H_
 
 enum class enumImplement
 {
-	XXX_IMPELEMENT_E
+	INVALID_IMPLEMENT,
+	DIG_IMPELEMENT_E,
+	SOW_IMPELEMENT_E,
+	PLOW_IMPELEMENT_E,
+	MAX_IMPELEMENT_E
+
 };
+
+#endif

@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "ImplementModule.h"
+#include "UdpImplement.h"
+#include "Rs422Implement.h"
 
 using namespace std;
 
@@ -12,7 +14,9 @@ volatile bool running = true;
 int main()
 {
 	ImplementModule impModule;
-	impModule.registerImpelement(enumImplement::XXX_IMPELEMENT_E, new UdpImplement());
+	impModule.registerImpelement(enumImplement::DIG_IMPELEMENT_E, new UdpImplement(7777));
+	impModule.registerImpelement(enumImplement::PLOW_IMPELEMENT_E, new UdpImplement(7778));
+	impModule.registerImpelement(enumImplement::SOW_IMPELEMENT_E, new Rs422Implement());
 
 	while (running)
 	{

@@ -1,4 +1,6 @@
 #pragma once
+#ifndef UDP_COMMUNICATION_H_
+#define UDP_COMMUNICATION_H_
 
 #include "CommunicationIF.h"
 
@@ -23,9 +25,7 @@ class UdpCommunication : public CommunicationIF
 public:
     UdpCommunication(int port);
 
-    int m_port;
-
-    int m_sockfd;
+    virtual ~UdpCommunication();
 
     virtual bool init();
 
@@ -35,8 +35,12 @@ public:
 
 private:
 
+    int m_port;
+
+    int m_sockfd;
+
     struct sockaddr_in m_cliaddr; // Ugly shortcut... luck of time
 };
 
-
+#endif
 

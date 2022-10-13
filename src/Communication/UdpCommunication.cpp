@@ -10,6 +10,14 @@ UdpCommunication::UdpCommunication(int port)
     WSAStartup(MAKEWORD(2, 2), &Data); // 2.2 version
 }
 
+UdpCommunication::~UdpCommunication()
+{
+    if (m_sockfd >= 0)
+    {
+        closesocket(m_sockfd);
+    }
+}
+
 bool UdpCommunication::init()
 {
     // Code based on https://www.geeksforgeeks.org/udp-server-client-implementation-c/
@@ -23,6 +31,13 @@ bool UdpCommunication::init()
         perror("socket creation failed");
         return false;
     }
+
+    // Set non-blocking socket
+    u_long iMode = 1;
+
+    int iResult = ioctlsocket(m_sockfd, FIONBIO, &iMode);
+    if (iResult != NO_ERROR)
+        printf("ioctlsocket failed with error: %ld\n", iResult);
 
     memset(&servaddr, 0, sizeof(servaddr));
 

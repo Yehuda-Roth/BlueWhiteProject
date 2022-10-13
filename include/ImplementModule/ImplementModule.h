@@ -1,4 +1,6 @@
 #pragma once
+#ifndef IMPLEMENT_MODULE_H_
+#define IMPLEMENT_MODULE_H_
 
 #include <map>
 
@@ -20,6 +22,8 @@ public:
 
 	virtual int getImplementFuel(enumImplement id);
 
+	virtual bool getImplementStatus(enumImplement id);
+
 	void doCycle();
 
 private:
@@ -27,3 +31,5 @@ private:
 
 	CommunicationIF* m_comm;
 };
+
+#endif // IMPLEMENT_MODULE_H_
